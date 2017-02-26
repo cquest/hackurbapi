@@ -7,11 +7,10 @@ class GpuResource(object):
         db = psycopg2.connect("dbname=gpu")
         cur = db.cursor()
 
-        lat = float(req.params.get('lat',48.85))
-        lon = float(req.params.get('lon',2.35))
+        lat = float(req.params.get('lat',45.8836))
+        lon = float(req.params.get('lon',6.2131))
         dist = float(req.params.get('dist',100))
 
-        # get a building from the allready partially crowdsourced ones
         query = cur.mogrify("""SELECT json_build_object('type','FeatureCollection','features',array_agg(geojson::json))::text
             FROM gpu_all
             WHERE ST_Intersects(wkb_geometry, ST_Buffer(ST_MakePoint(%s,%s)::geography, %s)::geometry) """,(lon,lat,dist))
