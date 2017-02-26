@@ -1,16 +1,25 @@
 #! /usr/bin/python3
 import falcon
 import psycopg2
+import requests
+import json
 
 class GpuResource(object):
     def getGpu(self, req, resp):
         db = psycopg2.connect("dbname=gpu")
         cur = db.cursor()
 
-        insee = req.params.get('insee',None)
-        lat = float(req.params.get('lat',45.8836))
-        lon = float(req.params.get('lon',6.2131))
+        adresse = req.params.get('adresse',None)
+        if adresse is not None:
+            r = requests.get('http://api-adresse.data.gouv.fr/search', params={"q":adresse, "autocomplete":0, "limit":1})
+            geo = json.loads(r.text)
+            lon = geo['features'][0]['geometry']['coordinates'][0]
+            lat = geo['features'][0]['geometry']['coordinates'][1]
+        else:
+            lat = float(req.params.get('lat',45.8836))
+            lon = float(req.params.get('lon',6.2131))
         dist = float(req.params.get('dist',100))
+        insee = req.params.get('insee',None)
         layer = req.params.get('layer',None)
 
         where = ''

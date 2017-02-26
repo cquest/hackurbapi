@@ -23,13 +23,16 @@ Recherche par position géographique:
 - **lon**: longitude en WGS84
 - **dist** (optionnel): distance en mètres pour la proximité (100m par défaut)
 
+ou par adresse:
+- **adresse** : adresse à chercher sur l'[API BAN](http://adresse.data.gouv.fr/api/)
+
 ou par code INSEE:
 - **insee**: code INSEE de la commune
 
 Filtre par couche:
 - **layer** (optionnel): info, prescription, secteur_cc, prescription
 
-Retourne une Featurecollection geojson.
+Retourne une FeatureCollection geojson.
 
 Les champs initiaux sont retournés pour chaque objet, ainsi qu'un champ "layer" contenant le type de couche (info, prescription, secteur_cc ou zone_urba)
 
