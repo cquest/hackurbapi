@@ -54,6 +54,7 @@ done
 done
 
 
+# création des vues pour simplification de l'API
 psql gpu -c "
 create or replace view gpu_prescription_json as select json_build_object('type','Feature','properties',json_build_object('layer','prescription','libelle',libelle,'txt',txt,'typepsc',typepsc,'nomfic',nomfic,'urlfic',urlfic,'insee',insee,'datappro',datappro,'datvalid',datvalid),'geometry',st_asgeojson(wkb_geometry,6)::json)::text as geojson ,*, 'prescription'::text as layer from gpu_prescription ;
 
@@ -64,10 +65,12 @@ create or replace view gpu_info_json as select json_build_object('type','Feature
 create or replace view gpu_secteur_cc_json as select json_build_object('type','Feature','properties',json_build_object('layer','secteur_cc','idurba',idurba,'libelle',libelle,'typesect',typesect,'fermreco',fermreco,'destdomi',destdomi,'nomfic',nomfic,'urlfic',urlfic,'insee',insee,'datappro',datappro,'datvalid',datvalid,'libelong',libelong),'geometry',st_asgeojson(wkb_geometry,6)::json)::text as geojson ,*,'secteur_cc'::text as layer from gpu_secteur_cc ;
 
 create view gpu_all as select layer,insee,wkb_geometry,geojson from gpu_prescription_json union select layer,insee,wkb_geometry,geojson from gpu_info_json union select layer,insee,wkb_geometry,geojson from gpu_zone_urba_json union select layer,insee,wkb_geometry,geojson from gpu_secteur_cc_json ;
+"
 
+# création des index pour recherche sur code INSEE
+psql gpu -c "
 create index gpu_info_insee on gpu_info (insee);
 create index gpu_prescription_insee on gpu_prescription (insee);
 create index gpu_secteur_cc_insee on gpu_secteur_cc (insee);
 create index gpu_zone_urba_insee on gpu_zone_urba (insee);
-
 "
