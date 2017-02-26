@@ -24,3 +24,9 @@ Un seul endpoint est disponible pour obtenir l'ensemble des objets à proximité
 Retourne une Featurecollection geojson.
 
 Les champs initiaux sont retournés pour chaque objet, ainsi qu'un champ "layer" contenant le type de couche (info, prescription, secteur_cc ou zone_urba)
+
+## API de démo
+
+Une version démo est disponible pour test sur: http://urbapi.cquest.ogr2ogr
+
+Exemple: http://urbapi.cquest.org/gpu?lon=6.21&lat=45.88
