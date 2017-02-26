@@ -2,7 +2,10 @@
 
 dropdb gpu
 createdb gpu
-psql gpu -c "CREATE EXTENSION postgis;"
+psql gpu -c "
+CREATE EXTENSION postgis;
+SET default_tablespace = ssd;
+"
 
 unset SHAPE_ENCODING
 pgoptions=" -nlt geometry -t_srs EPSG:4326"
