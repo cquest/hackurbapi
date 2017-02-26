@@ -11,12 +11,15 @@ class GpuResource(object):
         lat = float(req.params.get('lat',45.8836))
         lon = float(req.params.get('lon',6.2131))
         dist = float(req.params.get('dist',100))
+        layer = req.params.get('layer',None)
 
         where = ''
         if insee is not None:
             where = cur.mogrify(' AND insee=%s',(insee,))
         else:
             where = cur.mogrify(' AND ST_Intersects(wkb_geometry, ST_Buffer(ST_MakePoint(%s,%s)::geography, %s)::geometry)',(lon,lat,dist))
+        if layer is not None:
+            where = where + cur.mogrify(' AND layer=%s ',(layer,))
 
         query = """SELECT json_build_object('type','FeatureCollection','features',array_agg(geojson::json))::text
             FROM gpu_all
