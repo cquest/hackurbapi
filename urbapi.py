@@ -15,7 +15,6 @@ class GpuResource(object):
         query = cur.mogrify("""SELECT json_build_object('type','FeatureCollection','features',array_agg(geojson::json))::text
             FROM gpu_all
             WHERE ST_Intersects(wkb_geometry, ST_Buffer(ST_MakePoint(%s,%s)::geography, %s)::geometry) """,(lon,lat,dist))
-        print(query)
         cur.execute(query)
 
         gpu = cur.fetchone()
