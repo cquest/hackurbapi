@@ -22,6 +22,7 @@ Recherche par position géographique:
 - **lat** : latitude en WGS84
 - **lon**: longitude en WGS84
 - **dist** (optionnel): distance en mètres pour la proximité (100m par défaut)
+
 ou par code INSEE:
 - **insee**: code INSEE de la commune
 
