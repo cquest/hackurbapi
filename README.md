@@ -29,4 +29,4 @@ Les champs initiaux sont retournés pour chaque objet, ainsi qu'un champ "layer"
 
 Une version démo est disponible pour test sur: http://urbapi.cquest.ogr2ogr
 
-Exemple: http://urbapi.cquest.org/gpu?lon=6.21&lat=45.88
+Exemple: http://urbapi.cquest.org/gpu?lon=6.2131&lat=45.8836
