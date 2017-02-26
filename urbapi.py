@@ -28,7 +28,7 @@ class GpuResource(object):
         resp.status = falcon.HTTP_200
         resp.set_header('X-Powered-By', 'HackUrbAPI')
         resp.set_header('Access-Control-Allow-Origin', '*')
-        resp.set_header("Access-Control-Expose-Headers",'"Access-Control-Allow-Origin")
+        resp.set_header("Access-Control-Expose-Headers","Access-Control-Allow-Origin")
         resp.set_header('Access-Control-Allow-Headers','Origin, X-Requested-With, Content-Type, Accept')
         resp.body = (gpu[0])
         db.close()
