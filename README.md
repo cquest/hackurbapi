@@ -41,3 +41,9 @@ Les champs initiaux sont retournés pour chaque objet, ainsi qu'un champ "layer"
 Une version démo est disponible pour test sur: http://urbapi.cquest.ogr2ogr
 
 Exemple: http://urbapi.cquest.org/gpu?lon=6.2131&lat=45.8836
+
+## GUI de démo
+
+Visible sur: https://jdesboeufs.github.io/hackurba/
+
+Le code est quant à lui sur https://github.com/jdesboeufs/hackurba
