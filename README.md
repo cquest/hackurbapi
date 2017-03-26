@@ -38,7 +38,7 @@ Les champs initiaux sont retournés pour chaque objet, ainsi qu'un champ "layer"
 
 ## API de démo
 
-Une version démo est disponible pour test sur: http://urbapi.cquest.ogr2ogr
+Une version démo est disponible pour test sur: http://urbapi.cquest.org
 
 Exemple: http://urbapi.cquest.org/gpu?lon=6.2131&lat=45.8836
 
